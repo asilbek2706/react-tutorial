@@ -1,9 +1,14 @@
-import './App.css';
+import TodoList from './Todo/TodoList';
+import TodoItem from './Todo/TodoItem';
 
 function App() {
-  return (
-    <h1>Hello World</h1>
-  );
+    return (
+        <div className={'wrapper'}>
+            <h1>React Tutorial</h1>
+            <TodoList />
+            <TodoItem />
+        </div>
+    );
 }
 
 export default App;
