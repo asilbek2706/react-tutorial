@@ -1,30 +1,59 @@
+/* Ro'yxat elementi */
 .li-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 16px;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    padding: 12px 18px;
+    background-color: #ffffff;
+    border: 1px solid #f0f0f0; /* Juda och chegara */
+    border-radius: 12px; /* Yumshoqroq burchaklar */
+    margin-bottom: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02); /* Deyarli sezilmas soya */
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.input {
-    margin-right: 0.5rem;
+.li-item:hover {
+    transform: translateY(-2px); /* Ustiga borganda biroz ko'tariladi */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    border-color: #e0e0e0;
 }
+
+/* Input (Checkbox bo'lsa) */
+.input {
+    margin-right: 12px;
+    cursor: pointer;
+    accent-color: #007bff; /* Checkbox rangini ko'k qilish */
+    width: 18px;
+    height: 18px;
+}
+
+/* Bajarilgan vazifa matni */
 .done {
     text-decoration: line-through;
+    color: #888; /* Rangini o'chirish */
+    opacity: 0.6;
 }
 
+/* O'chirish tugmasi */
 .btn {
-    padding: 3px 10px;
-    background: crimson;
-    outline: none;
-    border-radius: 5px;
+    padding: 6px 12px;
+    background: #ff4d4f; /* Yumshoqroq qizil */
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 8px;
     border: none;
     cursor: pointer;
-    transition: opacity 0.5s ease;
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
-    opacity: 0.8;
+    background: #d9363e;
+    box-shadow: 0 2px 8px rgba(255, 77, 79, 0.3);
+}
+
+.btn:active {
+    transform: scale(0.95); /* Bosilganda kichrayish effekti */
 }
