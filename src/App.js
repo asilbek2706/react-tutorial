@@ -1,25 +1,36 @@
 import TodoList from './Todo/TodoList';
+import { useState } from 'react';
+import Context from './context';
 
 function App() {
-    let todos = [
+    const [todos, setTodos] = useState([
         { id: 1, completed: false, title: 'Real Madrid' },
-        { id: 2, completed: false, title: 'Barcelona' },
-        { id: 3, completed: false, title: 'Chelsea' },
-    ];
+        { id: 2, completed: true, title: 'Barcelona' },
+        { id: 3, completed: true, title: 'Chelsea' },
+    ]);
 
     function toggleTodo(id) {
-        todos = todos.map((todo) => {
-            if (todo.id === id) {
-                todo.completed = !todo.completed;
-            }
-        });
+        setTodos(
+            todos.map((todo) => {
+                if (todo.id === id) {
+                    todo.completed = !todo.completed;
+                }
+                return todo;
+            })
+        );
+    }
+
+    function removeTodo(id) {
+        setTodos(todos.filter((todo) => todo.id !== id));
     }
 
     return (
-        <div className='App'>
-            <h1>React Tutorial</h1>
-            <TodoList todos={todos} onToggle={toggleTodo} />
-        </div>
+        <Context.Provider value={{ removeTodo }}>
+            <div className='App'>
+                <h1>React Tutorial</h1>
+                <TodoList todos={todos} onToggle={toggleTodo} />
+            </div>
+        </Context.Provider>
     );
 }
 

@@ -1,16 +1,33 @@
 import PropTypes from 'prop-types';
-
+import Context from '../context';
 import './Todo.css';
+import { useContext } from 'react';
 
 function TodoItem({ todo, index, onChange }) {
+    const { removeTodo } = useContext(Context);
+    const classes = [];
+
+    if (todo.completed) {
+        classes.push('done');
+    }
+
     return (
         <li className={'li-item'}>
-            <span>
-                <input type={'checkbox'} onChange={() => onChange(todo.id)} /> &nbsp;
+            <span className={classes.join(' ')}>
+                <input
+                    type={'checkbox'}
+                    checked={todo.completed}
+                    onChange={() => onChange(todo.id)}
+                    className={'input'}
+                />{' '}
+                &nbsp;
                 <b>{index + 1}</b> &nbsp;
                 {todo.title}
             </span>
-            <button> &times; </button>
+            <button className={'btn'} onClick={removeTodo.bind(null, todo.id)}>
+                {' '}
+                &times;{' '}
+            </button>
         </li>
     );
 }
